@@ -1,0 +1,38 @@
+// 1. Запитай у користувача п’ятирозрядне число і визначи, чи є воно паліндромом.
+function checkPalindrom(a) {
+  if (isNaN(a) || typeof a !== "number") {
+    throw new Error("enter a correct value");
+  } else if (a < 10000 || a > 99999) {
+    throw new Error("enter a fife digit number");
+  } else {
+    let reverseNumber = Number(a.toString().split("").reverse().join(""));
+    if (reverseNumber === a) {
+      return "it's palindrom";
+    }
+    return "it isn't palindrom";
+  }
+}
+// 2. Запитай у користувача суму покупки і виведи суму до оплати зі знижкою:
+// від 200 до 300 - знижка буде 3%;
+// від 300 до 500 - 5%;
+// від 500 і вище - 7%.
+function getDiscount(a) {
+  if (isNaN(a) || typeof a !== "number") {
+    throw new Error("enter a correct value");
+  }
+  if (a >= 200 && a <= 300) {
+    let sumWithDiscount = a - (a * 3) / 100;
+    return `amount to be paid is £ ${sumWithDiscount.toFixed(2)}`;
+  } else if (a >= 300 && a < 500) {
+    let sumWithDiscount = a - (a * 5) / 100;
+    return `amount to be paid is £ ${sumWithDiscount.toFixed(2)}`;
+  } else if (a >= 500) {
+    let sumWithDiscount = a - (a * 7) / 100;
+    return `amount to be paid is £ ${sumWithDiscount.toFixed(2)}`;
+  }
+  if (a < 200) {
+    return `amount to be paid is £ ${a}`;
+  }
+}
+
+export { checkPalindrom, getDiscount };
